@@ -1,7 +1,7 @@
 name: Pylint
 
-on: [push]
-
+on: [# Jeth-
+Acode - powerful text/code editor for android
 jobs:
   build:
     runs-on: ubuntu-latest
