@@ -1,0 +1,62 @@
+<details>
+  <summary>What is HTML?</summary>
+
+  <p>
+    HTML (HyperText Markup Language) is the standard language used
+    to structure content on the web.
+  </p>
+</details><style>
+  details {
+    width: 320px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-family: sans-serif;
+  }
+
+  summary {
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  details[open] {
+    background: #f5f7ff;
+  }
+</style>
+
+<details>
+  <summary>Show advanced options</summary>
+
+  <p>These options are hidden until the user opens this section.</p>
+</details>details[open] {
+  /* styles while expanded */
+}<details>
+  <summary>ما هو HTML؟</summary>
+
+  <p>
+    HTML هي اللغة المستخدمة لبناء وتنظيم محتوى صفحات الويب.
+  </p>
+</details><style>
+  details {
+    width: 300px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-family: Arial;
+  }
+
+  summary {
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  details[open] {
+    background: #f0f4ff;
+  }
+</style>
+
+<details>
+  <summary>إظهار المعلومات</summary>
+
+  <p>هذه المعلومات تظهر عند فتح القائمة.</p>
+</details>
