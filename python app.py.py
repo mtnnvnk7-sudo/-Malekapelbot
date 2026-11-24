@@ -1,5 +1,183 @@
 10.31 16:30
-pip3.11 install marker-pdf                                      ─╯
+pi{
+  "mcp": {
+    "inputs": [
+      {
+        "type": "promptString",
+        "id": "github_token",
+        "description": "GitHub Personal Access Token",
+        "password": true
+      }
+    ],
+    "servers": {
+      "github": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "GITHUB_PERSONAL_ACCESS_TOKEN",p3.11 inSetting Up Environment Downloading rootfs & configuring packagesPreparing host (may download bootstrap from GitHub)...: Extracting bootstrap + deploying ...scripts Host ready / Downloading Kali rootfs... : Down loading Kafrom openai import OpenAI
+
+with OpenAI() as client:
+    with client.beta.agents.sessions.create(
+        agent={
+            "model": "gpt-6-astra",
+            "instructions": "Write clean code, run it, and report the actual output.",
+        },
+        environment={"type": "openai_hosted"},
+        input="Create tree.py, a Python script that prints a readable tree of the files in the current directory. Run it and show me the output.",
+        stream=True,
+    ).with_result_collection() as stream:
+        for event in stream:
+            print(event.to_json(indent=None), flush=True)
+        result = stream.get_final_result()
+    print(result.output_text)
+    session_id = result.session_idli ...root fs
+import os
+import sys
+from pathlib import Path
+
+from dotenv import load_dotenv
+from openai import OpenAI
+
+load_dotenv()
+
+API_KEY = os.getenv("OPENAI_API_KEY")
+if not API_KEY:
+    print("ERROR: OPENAI_API_KEY is missing from .env")
+    sys.exit(1)
+
+client = OpenAI()
+
+BASE_DIR = Path.home() / "agent-x"
+WORKSPACE = BASE_DIR / "workspace"
+LOG_DIR = BASE_DIR / "logs"
+
+WORKSPACE.mkdir(parents=True, exist_ok=True)
+LOG_DIR.mkdir(parents=True, exist_ok=True)
+
+INSTRUCTIONS = """
+You are AGENT-X, a coding and research AI agent.
+
+Your responsibilities:
+- Analyze user tasks carefully.
+- Create useful Python code and project files.
+- Explain your decisions clearly.
+- Work efficiently and avoid unnecessary complexity.
+- Report what was actually accomplished.
+- Never claim to have executed something unless execution is confirmed.
+- Operate only within your hosted environment.
+- Never request, expose, or print API keys or secrets.
+- Ask for confirmation before destructive or sensitive actions.
+"""
+
+def run_task(task: str):
+    print("\n[AGENT-X] Starting task...\n")
+
+    try:
+        with client.beta.agents.sessions.create(
+            agent={
+                "model": "gpt-6-astra",
+                "instructions": INSTRUCTIONS,
+            },
+            environment={"type": "openai_hosted"},
+            input=task,
+            stream=True,
+        ).with_result_collection() as stream:
+
+            for event in stream:
+                try:
+                    print(event.to_json(indent=None), flush=True)
+                except Exception:
+                    print(event, flush=True)
+
+            result = stream.get_final_result()
+
+        print("\n" + "=" * 50)
+        print("[AGENT-X] FINAL RESULT")
+        print("=" * 50)
+        print(result.output_text)
+
+        print("\nSession ID:", result.session_id)
+
+        with open(LOG_DIR / "agent.log", "a", encoding="utf-8") as f:
+            f.write(f"\nTASK: {task}\n")
+            f.write(f"SESSION: {result.session_id}\n")
+            f.write(f"RESULT: {result.output_text}\n")
+            f.write("-" * 60 + "\n")
+
+    except Exception as e:
+        print(f"\n[ERROR] {type(e).__name__}: {e}")
+
+def main():
+    print("""
+╔══════════════════════════════════════╗
+║         AGENT-X AI TERMINAL       ║
+║       OPENAI AGENTS API            ║
+╚══════════════════════════════════════╝
+
+Commands:
+  help    Show help
+  clear   Clear screen
+  exit    Exit agent
+""")
+
+    while True:
+        try:
+            task = input("\nAGENT-X > ").strip()
+
+            if not task:
+                continue
+
+            if task.lower() in ("exit", "quit"):
+                print("Agent shutting down.")
+                break
+
+            if task.lower() == "clear":
+                os.system("clear")
+                continue
+
+            if task.lower() == "help":
+                print("""
+Examples:
+  Explain this Python project
+  Write a Python calculator
+  Create a Flask API example
+  Analyze a programming error
+  Design a project structure
+""")
+                continue
+
+            run_task(task)
+
+        except KeyboardInterrupt:
+            print("\nInterrupted.")
+        except EOFError:
+            break
+
+if __name__ == "__main__":
+    main()
+stcd ~/projects/telegram_bot
+tocd ~/CyberGuardAI
+nano cyberguard/cve_intel.pynano .gitignoreuch ap/data/data/com.androidharness.app/shared_prefs
+/data/data/com.androidharness.app/files/datastore
+/data/data/com.androidharness.app/files/config/data/data/com.androidharness.app/files/linuxp/mamake web-install
+make web-buildGET /api/v1/levelsin.pyall ma/data/data/com.androidharness.app/files/linux/hogit clone https://github.com/Ma7moud3ly/nemo-editor.git
+cd nemo-editor
+
+# Desktop app
+./gradlew :desktopApp:run
+
+# Android app
+./gradlew :androidApp:installGmsDebug
+
+# Web app
+./gradlew :webApp:wasmJsBrowserDevelopmentRunme/.gr# development server at http://localhost:8080
+./gradlew :webApp:wasmJsBrowserDevelopmentRun
+
+# production build
+./gradlew :webApp:wasmJsBrowserDistributionadle/ca/data/data/com.androidharness.app/cache/deb-downloadchesrker-pdf                                      ─╯
 Collecting marker-pdf
   Using cached marker_pdf-0.3.9-py3-none-any.whl.metadata (16 kB)
 Collecting Pillow<11.0.0,>=10.1.0 (from marker-pdf)
@@ -68,8 +246,8 @@ Collecting scikit-learn<=1.4.2,>=1.3.2 (from marker-pdf)
       [end of output]
   note: This error originates from a subprocess, and is likely not a problem with pip.
 error: subprocess-exited-with-error
-× pip subprocess to install build dependencies did not run successfully.
+× pip subprocess to install build dependencies d.Task list updated (1/6 completed) [:s took]id not run successfully.
 │ exit code: 1
-╰─> See above for output.
+╰─> {"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":"This command was blocked because it matches a destructive-shell-command pattern. Policy: destructive_shell_command_blocked, from AGT's stock bundle (agt_stock). Matched at offset 0."}}erGuardAI/CyberGuardAI-Artemis-V2cyberguard-artemis run open_settings_demoSee above for output.
 note: This error originates from a subprocess, and is likely not a problem with pip.
 
